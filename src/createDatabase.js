@@ -1,18 +1,18 @@
 const mongoose = require("mongoose");
 const Subscriber = require("./models/subscriber");
 const data = require("./data");
-require("dotenv").config();
 
 // Connect to database
-const dbUrl = process.env.DATABASE_URI;
+
+const string = `mongodb+srv://warlockk:gabru123@cluster0.1yrferc.mongodb.net/?retryWrites=true&w=majority`;
+
 mongoose
-  .connect(dbUrl, {
+  .connect(string, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
   })
   .then(() => {
     console.log("Database connected");
-    console.log(dbUrl);
   })
   .catch((err) => {
     console.log("Error connecting to database", err);

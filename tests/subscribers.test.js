@@ -1,11 +1,12 @@
 const mongoose = require("mongoose");
 const request = require("supertest");
 const app = require("../app");
-require("dotenv").config();
+
+const string = `mongodb+srv://warlockk:gabru123@cluster0.1yrferc.mongodb.net/?retryWrites=true&w=majority`;
 
 //connecting to the database before each test
 beforeEach(async () => {
-  await mongoose.connect(process.env.DATABASE_URL);
+  await mongoose.connect(string);
 });
 
 //closing database after each test

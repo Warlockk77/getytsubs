@@ -1,7 +1,7 @@
 const express = require("express");
 const app = require("./app.js");
 const mongoose = require("mongoose");
-require("dotenv").config();
+
 const port = 3000;
 
 // Parse JSON bodies (as sent by API clients)
@@ -11,9 +11,9 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
 // Connect to DATABASE
-const dbUrl = process.env.DATABASE_URI;
+const string = `mongodb+srv://warlockk:gabru123@cluster0.1yrferc.mongodb.net/?retryWrites=true&w=majority`;
 mongoose
-  .connect(dbUrl, { useNewUrlParser: true, useUnifiedTopology: true })
+  .connect(string, { useNewUrlParser: true, useUnifiedTopology: true })
   .then((result) => {
     console.log("connected to database");
     app.listen(port, () => console.log(`App listening on port ${port}!`));
