@@ -38,9 +38,9 @@ app.get("/subscribers/names", async (req, res, next) => {
 });
 
 //get the subscriber by id and handle 400
-app.get("/subscribers/:id", async (req, res) => {
+app.get("/subscribers/:_id", async (req, res) => {
   try {
-    let subscriber = await Subscriber.findById(req.params.id);
+    let subscriber = await Subscriber.findById(req.params._id);
     res.status(200).json(subscriber);
   } catch (error) {
     res.status(400).json({ message: error.message });
