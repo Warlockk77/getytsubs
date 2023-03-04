@@ -28,7 +28,7 @@ app.get("/subscribers/names", async (req, res, next) => {
   try {
     let subscribers = await Subscriber.find(
       {},
-      { name: 1, subscribedChannel: 1, _id: 1 }
+      { name: 1, subscribedChannel: 1, _id: 0 }
     );
     res.status(200).json(subscribers);
   } catch (error) {
