@@ -1,22 +1,22 @@
 const express = require("express");
-const app = require("./routes.js");
+const app = require("./app.js");
 const mongoose = require("mongoose");
-const dotenv = require("dotenv");
-dotenv.config();
+require("dotenv").config();
+const port = 3000;
 
+// Parse JSON bodies (as sent by API clients)
 mongoose.set("strictQuery", false);
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
+// Connect to DATABASE
+const dbUrl = process.env.DATABASE_URI;
 mongoose
-  .connect(process.env.MONGO_URI, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-  })
+  .connect(dbUrl, { useNewUrlParser: true, useUnifiedTopology: true })
   .then((result) => {
-    console.log("DATABASE CONNECTED !");
-    app.listen(3000, () => console.log("SERVER RUNNING AT PORT 3000 !"));
+    console.log("connected to database");
+    app.listen(port, () => console.log(`App listening on port ${port}!`));
   })
   .catch((err) => {
     console.log(err);
