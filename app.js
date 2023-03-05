@@ -2,14 +2,15 @@ const express = require("express");
 const Subscriber = require("./src/models/subscriber");
 const path = require("path");
 
-//invoking express function
+//USING EXPRESS
 const app = express();
 
-//routes
+//ALL ROUTES
 app.get("/", (req, res) => {
   res.sendFile(path.join(__dirname, "/index.html"));
 });
-//get all subscribers
+
+//GETTING ALL SUBS
 app.get("/subscribers", async (req, res, next) => {
   try {
     let subscribers = await Subscriber.find();
@@ -20,7 +21,7 @@ app.get("/subscribers", async (req, res, next) => {
   }
 });
 
-//get all subscibers name and subscribed channel
+//GETTING ALL SUBS WITH NAMES AND CHANNEL THEY HAVE SUBSCRIBED TO
 app.get("/subscribers/names", async (req, res, next) => {
   try {
     let subscribers = await Subscriber.find(
@@ -34,7 +35,7 @@ app.get("/subscribers/names", async (req, res, next) => {
   }
 });
 
-//get the subscriber by id and handle 400
+//GETTING A SUBSCRIBERS DETAILS BY RESPECTIVE ID
 app.get("/subscribers/:id", async (req, res) => {
   try {
     let id = req.params.id;

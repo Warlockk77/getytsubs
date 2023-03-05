@@ -4,12 +4,10 @@ const app = require("../app");
 
 const string = `mongodb+srv://warlockk:gabru123@cluster0.1yrferc.mongodb.net/?retryWrites=true&w=majority`;
 
-//connecting to the database before each test
 beforeEach(async () => {
   await mongoose.connect(string);
 });
 
-//closing database after each test
 afterEach(async () => {
   await mongoose.connection.close();
 });

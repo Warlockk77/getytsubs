@@ -2,7 +2,7 @@ const mongoose = require("mongoose");
 const Subscriber = require("./models/subscriber");
 const data = require("./data");
 
-// Connect to database
+// DATABASE CONNECTION
 
 const string = `mongodb+srv://warlockk:gabru123@cluster0.1yrferc.mongodb.net/?retryWrites=true&w=majority`;
 
@@ -18,7 +18,7 @@ mongoose
     console.log("Error connecting to database", err);
   });
 
-// Refresh data in subscribers collection
+// REFRESHING DATA
 async function refreshData() {
   try {
     await Subscriber.deleteMany({}, { wtimeout: 30000 });

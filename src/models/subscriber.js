@@ -1,5 +1,7 @@
 const mongoose = require("mongoose");
 
+//SCHEMA
+
 const susbcriberSchema = new mongoose.Schema({
   name: {
     type: String,
