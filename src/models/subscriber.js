@@ -1,9 +1,6 @@
 const mongoose = require("mongoose");
 
 const susbcriberSchema = new mongoose.Schema({
-  _id: {
-    type: mongoose.SchemaTypes._id,
-  },
   name: {
     type: String,
     required: true,
