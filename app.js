@@ -4,9 +4,6 @@ const path = require("path");
 
 //invoking express function
 const app = express();
-app.use(express.urlencoded({ extended: false }));
-
-app.use(express.json());
 
 //routes
 app.get("/", (req, res) => {
@@ -28,7 +25,7 @@ app.get("/subscribers/names", async (req, res, next) => {
   try {
     let subscribers = await Subscriber.find(
       {},
-      { name: 1, subscribedChannel: 1, id: 0 }
+      { name: 1, subscribedChannel: 1, _id: 0 }
     );
     res.status(200).json(subscribers);
   } catch (error) {
@@ -40,7 +37,8 @@ app.get("/subscribers/names", async (req, res, next) => {
 //get the subscriber by id and handle 400
 app.get("/subscribers/:id", async (req, res) => {
   try {
-    let subscriber = await Subscriber.findById(req.params.id);
+    let id = req.params.id;
+    let subscriber = await Subscriber.findById(id);
     res.status(200).json(subscriber);
   } catch (error) {
     res.status(400).json({ message: error.message });
